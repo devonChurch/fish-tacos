@@ -40,4 +40,4 @@ phases:
   post_build:
     commands:
       - echo "publish"
-      - npm run publish
+      - npm run publish -- --debug
