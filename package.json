@@ -7,6 +7,9 @@
     "commit": "git-cz",
     "build": "echo \"Error: no build specified\" && exit 0",
     "test": "echo \"Error: no test specified\" && exit 0",
+    "prepare":
+      "cp ./package.json ./dist/package.json && cp ./package-lock.json ./dist/package-lock.json",
+    "publish": "cd ./dist && npm run semantic-release",
     "semantic-release": "semantic-release",
     "postpublish":
       "cp ./package.json ./dist/package.json && cp ./package-lock.json ./dist/package-lock.json"
@@ -31,12 +34,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "release": {
-    "publish": [
-      {
-        "pkgRoot": "dist"
-      }
-    ]
   }
 }

@@ -28,6 +28,9 @@ phases:
     commands:
       - echo "run unit tests"
       - npm run test
+      
+      - echo "run package.json preperation"
+      - npm run prepare
   
   build:
     commands:
@@ -37,4 +40,4 @@ phases:
   post_build:
     commands:
       - echo "publish"
-      - npm run semantic-release
+      - npm run publish
