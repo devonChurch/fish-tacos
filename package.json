@@ -2,18 +2,21 @@
   "name": "fish-tacos",
   "version": "0.0.0-development",
   "description": "A responsive resize system for CSS px values",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "commit": "git-cz",
+    "build": "echo \"Error: no build specified\" && exit 1",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "postpublish":
+      "cp ./package.json ./dist/package.json && cp ./package-lock.json ./dist/package-lock.json"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/devonChurch/fish-tacos.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/devonChurch/fish-tacos/issues"
   },
@@ -23,5 +26,17 @@
     "cz-conventional-changelog": "^2.1.0",
     "semantic-release": "^15.4.1",
     "semantic-release-cli": "^4.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release": {
+    "publish": [
+      {
+        "pkgRoot": "dist"
+      }
+    ]
   }
 }
