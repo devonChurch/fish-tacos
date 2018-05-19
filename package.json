@@ -1,0 +1,27 @@
+{
+  "name": "fish-tacos",
+  "version": "0.0.0-development",
+  "description": "A responsive resize system for CSS px values",
+  "main": "index.js",
+  "scripts": {
+    "commit": "git-cz",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devonChurch/fish-tacos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devonChurch/fish-tacos/issues"
+  },
+  "homepage": "https://github.com/devonChurch/fish-tacos#readme",
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0",
+    "semantic-release": "^15.4.1",
+    "semantic-release-cli": "^4.0.1"
+  }
+}
