@@ -2,14 +2,14 @@
   "name": "fish-tacos",
   "version": "0.0.0-development",
   "description": "A responsive resize system for CSS px values",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "commit": "git-cz",
     "build": "echo \"Error: no build specified\" && exit 0",
     "test": "echo \"Error: no test specified\" && exit 0",
     "prepare":
       "cp ./package.json ./dist/package.json && cp ./package-lock.json ./dist/package-lock.json",
-    "publish": "cd ./dist && npm run semantic-release",
+    "publish": "semantic-release",
     "semantic-release": "semantic-release",
     "postpublish":
       "cp ./package.json ./dist/package.json && cp ./package-lock.json ./dist/package-lock.json"

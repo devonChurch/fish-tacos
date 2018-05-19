@@ -29,8 +29,8 @@ phases:
       - echo "run unit tests"
       - npm run test
       
-      - echo "run package.json preperation"
-      - npm run prepare
+      # - echo "run package.json preperation"
+      # - npm run prepare
   
   build:
     commands:
