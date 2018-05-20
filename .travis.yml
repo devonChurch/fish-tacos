@@ -8,7 +8,7 @@ notifications:
   email: false
 
 node_js:
-  - '8'
+  - '8.5.0'
 
 install:
   - npm install
@@ -20,7 +20,7 @@ script:
   - npm run build
 
 after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
+  - npm run travis-deploy-once "npm run semantic-release -- --debug"
 
 branches:
   except:
