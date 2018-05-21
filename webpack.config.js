@@ -14,7 +14,7 @@ const config = {
 
   output: {
     path: dirDist,
-    filename: "fish-tacos.js",
+    filename: "index.js",
     library: "fishTacos",
     libraryTarget: "umd"
   },

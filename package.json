@@ -1,6 +1,6 @@
 {
   "name": "fish-tacos",
-  "version": "0.1.0",
+  "version": "0.0.0-development",
   "description": "A responsive resize system for CSS px values",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 0",
     "deploy": "semantic-release",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "postpublish": "cp -r dist/package.json . && cp -r dist/package-lock.json ."
   },
   "repository": {
     "type": "git",
@@ -36,5 +37,18 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "verifyConditions": ["@semantic-release/npm", "@semantic-release/git"],
+    "publish": [
+      {
+        "path": "@semantic-release/npm",
+        "pkgRoot": "dist"
+      },
+      {
+        "path": "@semantic-release/git",
+        "assets": ["package.json", "package-lock.json"]
+      }
+    ]
   }
 }
