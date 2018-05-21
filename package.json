@@ -24,6 +24,8 @@
   },
   "homepage": "https://github.com/devonChurch/fish-tacos#readme",
   "devDependencies": {
+    "@semantic-release/git": "^5.0.0",
+    "@semantic-release/npm": "^3.2.5",
     "clean-webpack-plugin": "^0.1.19",
     "commitizen": "^2.9.6",
     "cz-conventional-changelog": "^2.1.0",
@@ -39,7 +41,10 @@
     }
   },
   "release": {
-    "verifyConditions": ["@semantic-release/npm", "@semantic-release/git"],
+    "verifyConditions": [
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
     "publish": [
       {
         "path": "@semantic-release/npm",
@@ -47,7 +52,10 @@
       },
       {
         "path": "@semantic-release/git",
-        "assets": ["package.json", "package-lock.json"]
+        "assets": [
+          "package.json",
+          "package-lock.json"
+        ]
       }
     ]
   }
