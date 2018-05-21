@@ -4,7 +4,7 @@ const PRODUCTION_ENV = "production";
 const DEVELOPMENT_ENV = "development";
 const { NODE_ENV = PRODUCTION_ENV } = process.env;
 const isProduction = NODE_ENV === PRODUCTION_ENV;
-const dirDist = path.resolve(__dirname, "dist");
+const dirDist = path.resolve(__dirname);
 const dirSrc = path.resolve(__dirname, "src");
 
 const config = {

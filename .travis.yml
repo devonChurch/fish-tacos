@@ -20,12 +20,12 @@ script:
   - npm run build:production
 
 after_success:
-  # - npm run travis-deploy-once "npm run semantic-release -- --debug"
-  - npm run semantic-release pre -- --debug
-  - cp ./package.json ./dist/package.json
-  - cp ./package-lock.json ./dist/package-lock.json"
-  - npm publish ./dist
-  - npm run semantic-release post -- --debug
+  - npm run travis-deploy-once "npm run semantic-release -- --debug"
+  # - npm run semantic-release pre -- --debug
+  # - cp ./package.json ./dist/package.json
+  # - cp ./package-lock.json ./dist/package-lock.json"
+  # - npm publish ./dist
+  # - npm run semantic-release post -- --debug
 
 branches:
   except:
