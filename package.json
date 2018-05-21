@@ -10,8 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 0",
     "deploy": "semantic-release",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once",
-    "postpublish": "cp -r dist/package.json . && cp -r dist/package-lock.json ."
+    "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
     "type": "git",
@@ -38,16 +37,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "release": {
-    "verifyConditions": [
-      "@semantic-release/npm"
-    ],
-    "publish": [
-      {
-        "path": "@semantic-release/npm",
-        "pkgRoot": "dist"
-      }
-    ]
   }
 }
