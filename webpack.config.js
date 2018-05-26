@@ -16,7 +16,8 @@ const config = {
     path: dirDist,
     filename: "index.js",
     library: "fishTacos",
-    libraryTarget: "umd"
+    libraryTarget: "umd",
+    globalObject: "typeof self !== 'undefined' ? self : this"
   },
 
   devtool: isProduction ? "source-map" : "cheap-source-map",
