@@ -6,6 +6,7 @@ const { NODE_ENV = PRODUCTION_ENV } = process.env;
 const isProduction = NODE_ENV === PRODUCTION_ENV;
 const dirDist = path.resolve(__dirname);
 const dirSrc = path.resolve(__dirname, "src");
+const libraryName = "fishTacos";
 
 const config = {
   mode: isProduction ? PRODUCTION_ENV : DEVELOPMENT_ENV,
@@ -15,7 +16,7 @@ const config = {
   output: {
     path: dirDist,
     filename: "index.js",
-    library: "fishTacos",
+    library: libraryName,
     libraryTarget: "umd",
     globalObject: "typeof self !== 'undefined' ? self : this"
   },
@@ -23,6 +24,20 @@ const config = {
   devtool: isProduction ? "source-map" : "cheap-source-map",
 
   stats: isProduction ? "normal" : "errors-only",
+
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        use: "ts-loader",
+        include: dirSrc
+      }
+    ]
+  },
+
+  resolve: {
+    extensions: [".ts"]
+  },
 
   plugins: [new CleanWebpackPlugin(dirDist)]
 };
