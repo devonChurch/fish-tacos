@@ -1,20 +1,12 @@
-# Fish Tacos
+# Fish Tacos :tropical_fish: :fish: :blowfish:
 
 ## What
 
 This module complements the **react** and **styled-components** libraries to create an API that removes the cognitive load and arduous boilerplate associated with responsive scenarios.
 
-[![depends on styled-components](https://user-images.githubusercontent.com/15273233/40872099-ab686562-669c-11e8-8b7f-0d70f87280cb.png)](https://www.styled-components.com/)
+[![depends on styled-components](https://user-images.githubusercontent.com/15273233/40872099-ab686562-669c-11e8-8b7f-0d70f87280cb.png)](https://www.styled-components.com/) [![typescript](https://user-images.githubusercontent.com/15273233/40872275-a61d4660-669f-11e8-8edf-860f1947759f.png)](https://www.typescriptlang.org/) [![code style prettier](https://img.shields.io/badge/code_style-prettier-FF69A4.svg)](https://prettier.io/)
 
-[![depends on react](https://user-images.githubusercontent.com/15273233/40872100-ae1d736a-669c-11e8-965a-3ce06fbd872d.png)](https://reactjs.org/)
-
-[![typescript](https://user-images.githubusercontent.com/15273233/40872275-a61d4660-669f-11e8-8edf-860f1947759f.png)](https://www.typescriptlang.org/)
-
-[![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-
-[![code style prettier](https://img.shields.io/badge/code_style-prettier-FF69A4.svg)](https://prettier.io/)
+[![commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/) [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 ## Why
 
@@ -30,7 +22,7 @@ Unfortunately `min-*` and `max-*` declarations are not supported natively in **C
 
 ## Demo
 
-[This demo](https://codepen.io/DevonChurch/project/live/DeJWLQ/) retro fits several **Bootstrap** components with the fluid resizing system this module offers. Resize the window to see the responsive measurement declarations scale _up_ / _down_ while staying within the limits of their thresholds.
+[This demo](https://codepen.io/DevonChurch/project/live/AJGJPY/) retro fits several **Bootstrap** components with the fluid resizing system this module offers. Resize the window to see the responsive measurement declarations scale _up_ / _down_ while staying within the limits of their thresholds.
 
 ![fish-tacos](https://user-images.githubusercontent.com/15273233/40871976-3008e8d0-669a-11e8-99b1-66955a994286.gif)
 
@@ -110,7 +102,7 @@ margin-bottom: 0.625rem;
 
 ### Static
 
-As of **release 1.2.0** you can now pass in a static *number* or *string* and have it be included as a *non-fluid* measurement.
+As of **release 1.2.0** you can now pass in a static *number* or *string* and have it be included as a *non-fluid* measurement :smiley:.
 
 + **String**: Will be included verbatim.
 + **Number**: Should be supplied as a **pixel** reference and will be converted to **REM**'s.
@@ -133,7 +125,7 @@ margin-left: auto;
 
 ### Consolidation
 
-As of **release 1.3.0** you can now *consolidate* verbose references that share the same values into a single declaration by comma separating their keys.
+As of **release 1.3.0** you can now *consolidate* verbose references that share the same values into a single declaration by comma separating their keys :thumbsup:.
 
 ```javascript
 ft("margin", { "top,bottom": [20, 50], "right,left": "auto" });
@@ -183,7 +175,7 @@ const Heading1 = styled.h1`
 `;
 
 ReactDOM.render(
-  <Heading1>Hello World</Heading1>,
+  <Heading1>Hello World 👋</Heading1>,
   document.getElementById("app")
 );
 ```
