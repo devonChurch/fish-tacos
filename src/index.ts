@@ -122,7 +122,6 @@ const testIsUnitRelevant = (unit: string): boolean => {
 };
 
 const testIsValueRelevant = (value: number, reference: string): boolean => {
-  const { isNaN, isFinite } = Number;
   const isNotValue = !value;
   const isNotNumber = value && !(typeof value === 'number');
   const isNotFinite = !isNotNumber && !isFinite(value);
