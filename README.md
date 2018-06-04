@@ -61,11 +61,11 @@ _The above declaration will create the following vanilla **CSS**:_
 ```css
 font-size: 1.25rem;
 
-@media (min-width: 480px) {
+@media (min-width: 30rem) {
   font-size: 4.166666666666667vw;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 48rem) {
   font-size: 2rem;
 }
 ```
@@ -83,21 +83,21 @@ _The above declaration will create the following vanilla **CSS**:_
 ```css
 margin-top: 1.875rem;
 
-@media (min-width: 480px) {
+@media (min-width: 30rem) {
   margin-top: 6.25vw;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 60rem) {
   margin-top: 3.75rem;
 }
 
 margin-bottom: 0.625rem;
 
-@media (min-width: 480px) {
+@media (min-width: 30rem) {
   margin-bottom: 2.0833333333333335vw;
 }
 
-@media (min-width: 1439.9999999999998px) {
+@media (min-width: 90rem) {
   margin-bottom: 1.875rem;
 }
 ```
