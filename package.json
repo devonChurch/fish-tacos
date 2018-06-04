@@ -22,6 +22,9 @@
     "url": "https://github.com/devonChurch/fish-tacos/issues"
   },
   "homepage": "https://github.com/devonChurch/fish-tacos#readme",
+  "peerDependencies": {
+    "styled-components": "^3.3.2"
+  },
   "devDependencies": {
     "@semantic-release/npm": "^3.2.5",
     "@types/jest": "^22.2.3",
