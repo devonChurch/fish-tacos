@@ -95,8 +95,17 @@ padding: 0.625rem;
 `);
 });
 
+test('should split multi declaration keys into individual references', () => {
+  const result = ft('padding', { 'right,left': 'auto' });
+  expect(result).toMatch(`
+padding-right: auto;
+
+padding-left: auto;
+`);
+});
+
 test('should create a multi declaration in the correct format', () => {
-  const result = ft('padding', { top: [10, 20], right: 5, bottom: [15, 25], left: 'auto' });
+  const result = ft('padding', { top: [10, 20], 'right,left': 'auto', bottom: 30 });
   expect(result).toMatch(`
 padding-top: 0.625rem;
 
@@ -108,18 +117,10 @@ padding-top: 0.625rem;
   padding-top: 1.25rem;
 }
 
-padding-right: 0.3125rem;
-
-padding-bottom: 0.9375rem;
-
-@media (min-width: 30rem) {
-  padding-bottom: 3.125vw;
-}
-
-@media (min-width: 50rem) {
-  padding-bottom: 1.5625rem;
-}
+padding-right: auto;
 
 padding-left: auto;
+
+padding-bottom: 1.875rem;
 `);
 });

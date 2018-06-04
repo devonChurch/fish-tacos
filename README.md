@@ -131,7 +131,43 @@ margin-bottom: 1.25rem;
 margin-left: auto;
 ```
 
-### Example
+### Consolidation
+
+As of **release 1.3.0** you can now *consolidate* verbose references that share the same values into a single declaration by comma separating their keys.
+
+```javascript
+ft("margin", { "top,bottom": [20, 50], "right,left": "auto" });
+```
+
+_The above declaration will create the following vanilla **CSS**:_
+
+```css
+margin-top: 1.25rem;
+
+@media (min-width: 30rem) {
+  margin-top: 4.166666666666667vw;
+}
+
+@media (min-width: 75rem) {
+  margin-top: 3.125rem;
+}
+
+margin-bottom: 1.25rem;
+
+@media (min-width: 30rem) {
+  margin-bottom: 4.166666666666667vw;
+}
+
+@media (min-width: 75rem) {
+  margin-bottom: 3.125rem;
+}
+
+margin-right: auto;
+
+margin-left: auto;
+```
+
+## Example
 
 Integrating this module into your existing workflow is as easy as swapping out a standard **CSS** _property_ / _value_ declaration for the new API.
 
@@ -143,12 +179,7 @@ import ft from "fish-tacos";
 
 const Heading1 = styled.h1`
   ${ft("font-size", [30, 50])}
-  ${ft("margin", {
-    top: [30, 60],
-    right: "auto",
-    bottom: [10, 30],
-    left: "auto",
-  })};
+  ${ft("margin", { top: [30, 60], "right,left": "auto", bottom: 20 })};
 `;
 
 ReactDOM.render(

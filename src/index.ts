@@ -155,17 +155,23 @@ const createSingleDeclaration = (unit: string, sizes: any): string => {
   }
 };
 
-const createMultipleDeclaretions = (unit: string, sizes: MultiMinMax): string => {
-  const keys = Object.keys(sizes);
+// Flatten from { 'top.bottom': [5, 10] } into { top: [5, 10], bottom: [5, 10] }.
+const createFlattenedSizes = (keys: string, sizes: MultiMinMax) =>
+  keys.split(',').reduce((acc, key) => ({ ...acc, [key]: sizes[keys] }), {});
 
-  return keys.reduce(
-    (acc, key) => `${acc}${createSingleDeclaration(`${unit}-${key}`, sizes[key])}`,
+const createMultipleDeclaretions = (unit: string, sizes: MultiMinMax): string => {
+  const flattenedSizes = Object.keys(sizes).reduce(
+    (acc, keys) => ({ ...acc, ...createFlattenedSizes(keys, sizes) }),
+    {}
+  );
+
+  return Object.keys(flattenedSizes).reduce(
+    (acc, key) => `${acc}${createSingleDeclaration(`${unit}-${key}`, flattenedSizes[key])}`,
     ''
   );
 };
 
 const init = (unit: string, sizes: any): string => {
-  debugger;
   const isBaseFontSize = testBaseFontSize();
   const isUnitRelevant = testIsUnitRelevant(unit);
 
