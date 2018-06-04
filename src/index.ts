@@ -111,9 +111,15 @@ ${unit}: ${createRem(min)};
 `;
 };
 
+const testIsArray = value => Array.isArray(value);
+
+const testIsString = value => typeof value === 'string';
+
+const testIsNumber = value => typeof value === 'number';
+
 const testIsUnitRelevant = (unit: string): boolean => {
   const isNotUnit = !unit;
-  const isNotString = unit && !(typeof unit === 'string');
+  const isNotString = unit && !testIsString(unit);
 
   if (isNotUnit) throw `${logPrefix} "unit" parameter is not defined`;
   else if (isNotString) throw `${logPrefix} "unit" parameter is not of type "string"`;
@@ -121,10 +127,10 @@ const testIsUnitRelevant = (unit: string): boolean => {
   return !(isNotUnit && isNotString);
 };
 
-const testIsValueRelevant = (value: number, reference: string): boolean => {
-  const isNotValue = !value;
-  const isNotNumber = value && !(typeof value === 'number');
-  const isNotFinite = !isNotNumber && !isFinite(value);
+const testIsSizeRelevant = (size: number, reference: string): boolean => {
+  const isNotValue = !size;
+  const isNotNumber = size && !testIsNumber(size);
+  const isNotFinite = !isNotNumber && !isFinite(size);
 
   if (isNotValue) throw `${logPrefix} "${reference}" parameter is not defined`;
   else if (isNotNumber) throw `${logPrefix} "${reference}" parameter is not of type "number"`;
@@ -133,16 +139,21 @@ const testIsValueRelevant = (value: number, reference: string): boolean => {
   return !(isNotValue && isNotNumber && isNotFinite);
 };
 
-const testDeclarationParameters = (unit: string, [min, max]: [number, number]): boolean => {
-  const isUnitRelevant = testIsUnitRelevant(unit);
-  const isMinRelevant = testIsValueRelevant(min, 'min');
-  const isMaxRelevant = testIsValueRelevant(max, 'max');
+const testMinMaxSizes = ([min, max]: [number, number]): boolean =>
+  testIsSizeRelevant(min, 'min') && testIsSizeRelevant(max, 'max');
 
-  return isUnitRelevant && isMinRelevant && isMaxRelevant;
+const testIsSingleDeclaration = (sizes: [number, number] | string | number) =>
+  testIsArray(sizes) || testIsString(sizes) || testIsNumber(sizes);
+
+const createSingleDeclaration = (unit: string, sizes: any): string => {
+  // prettier-ignore
+  switch (true) {
+    case testIsString(sizes): return `\n${unit}: ${sizes};\n`;
+    case testIsNumber(sizes): return `\n${unit}: ${createRem(sizes)};\n`;
+    case testIsArray(sizes) && testMinMaxSizes(sizes): return createDynamicValues(unit, sizes);
+    default: return '';
+  }
 };
-
-const createSingleDeclaration = (unit: string, [min, max]: [number, number]): string =>
-  testDeclarationParameters(unit, [min, max]) ? createDynamicValues(unit, [min, max]) : '';
 
 const createMultipleDeclaretions = (unit: string, sizes: MultiMinMax): string => {
   const keys = Object.keys(sizes);
@@ -154,16 +165,15 @@ const createMultipleDeclaretions = (unit: string, sizes: MultiMinMax): string =>
 };
 
 const init = (unit: string, sizes: any): string => {
+  debugger;
   const isBaseFontSize = testBaseFontSize();
-  const isSingleDeclaration = Array.isArray(sizes);
+  const isUnitRelevant = testIsUnitRelevant(unit);
 
+  // prettier-ignore
   switch (true) {
-    case !isBaseFontSize:
-      return '';
-    case isSingleDeclaration:
-      return createSingleDeclaration(unit, sizes);
-    default:
-      return createMultipleDeclaretions(unit, sizes);
+    case !isBaseFontSize || !isUnitRelevant: return '';
+    case testIsSingleDeclaration(sizes): return createSingleDeclaration(unit, sizes);
+    default: return createMultipleDeclaretions(unit, sizes);
   }
 };
 

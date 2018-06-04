@@ -66,6 +66,20 @@ test('requires "unit" to be a "string"', () => {
   }
 );
 
+test('should replicate "string" measurements verbatim', () => {
+  const result = ft('padding', 'auto');
+  expect(result).toMatch(`
+padding: auto;
+`);
+});
+
+test('should convert "number" measurements into "rems"', () => {
+  const result = ft('padding', 16);
+  expect(result).toMatch(`
+padding: 1rem;
+`);
+});
+
 test('should create a single declaration in the correct format', () => {
   const result = ft('padding', [10, 20]);
   expect(result).toMatch(`
@@ -82,7 +96,7 @@ padding: 0.625rem;
 });
 
 test('should create a multi declaration in the correct format', () => {
-  const result = ft('padding', { top: [10, 20], bottom: [15, 25] });
+  const result = ft('padding', { top: [10, 20], right: 5, bottom: [15, 25], left: 'auto' });
   expect(result).toMatch(`
 padding-top: 0.625rem;
 
@@ -94,6 +108,8 @@ padding-top: 0.625rem;
   padding-top: 1.25rem;
 }
 
+padding-right: 0.3125rem;
+
 padding-bottom: 0.9375rem;
 
 @media (min-width: 30rem) {
@@ -103,5 +119,7 @@ padding-bottom: 0.9375rem;
 @media (min-width: 50rem) {
   padding-bottom: 1.5625rem;
 }
+
+padding-left: auto;
 `);
 });

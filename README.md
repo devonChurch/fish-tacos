@@ -108,6 +108,29 @@ margin-bottom: 0.625rem;
 }
 ```
 
+### Static
+
+As of **release 1.2.0** you can now pass in a static *number* or *string* and have it be included as a *non-fluid* measurement.
+
++ **String**: Will be included verbatim.
++ **Number**: Should be supplied as a **pixel** reference and will be converted to **REM**'s.
+
+```javascript
+ft("margin", { top: 50, right: "auto", bottom: 20, left: "auto" });
+```
+
+_The above declaration will create the following vanilla **CSS**:_
+
+```css
+margin-top: 3.125rem;
+
+margin-right: auto;
+
+margin-bottom: 1.25rem;
+
+margin-left: auto;
+```
+
 ### Example
 
 Integrating this module into your existing workflow is as easy as swapping out a standard **CSS** _property_ / _value_ declaration for the new API.
@@ -119,9 +142,12 @@ import styled from "styled-components";
 import ft from "fish-tacos";
 
 const Heading1 = styled.h1`
-  ${ft("font-size", [30, 50])} ${ft("margin", {
+  ${ft("font-size", [30, 50])}
+  ${ft("margin", {
     top: [30, 60],
-    bottom: [10, 30]
+    right: "auto",
+    bottom: [10, 30],
+    left: "auto",
   })};
 `;
 
